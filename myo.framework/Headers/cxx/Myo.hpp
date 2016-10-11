@@ -12,6 +12,16 @@ namespace myo {
 /// equal, they refer to the same device.
 class Myo {
 public:
+
+    //--------------- begin ----------------
+    // arthur add, 2015-09-17, get mac address and name for myo
+    void setName(std::string &name);
+    const char *name() const;
+    void setMacAddress(std::string &mac);
+    const char *macAddress() const;
+    //--------------- end ----------------
+
+
     /// Types of vibration supported by the Myo.
     enum VibrationType {
         vibrationShort  = libmyo_vibration_short,
@@ -70,6 +80,12 @@ private:
     ~Myo();
 
     libmyo_myo_t _myo;
+
+    //--------------- begin ----------------
+    // arthur add, 2015-09-17, get mac address and name for myo
+    std::string _mac;
+    std::string _name;
+    //--------------- end ----------------
 
     // Not implemented.
     Myo(const Myo&);
