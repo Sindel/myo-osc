@@ -73,6 +73,6 @@ You can find the MAC address of the myo easily by visiting http://diagnostics.my
 Feel free to contact me with any questions!
 
 You can reach me at <michele.abolaffio@gmail.com>.
-Or you can check my work at <micheleabolaffio.wordpress.com>
+Or you can check my work at micheleabolaffio.wordpress.com
 
 Remember to follow [@SamyKamkar](https://twitter.com/samykamkar) on Twitter or check out <http://samy.pl> for his other projects.
