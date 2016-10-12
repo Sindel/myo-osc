@@ -59,7 +59,7 @@ public:
         
         // Add the Myo pointer to our list of known Myo devices. This list is used to implement identifyMyo() below so
         // that we can give each Myo a nice short identifier.
-        knownMyos.push_back(myo);
+//        knownMyos.push_back(myo);
  //       myo->setStreamEmg(myo::Myo::streamEmgEnabled);
         
         
@@ -153,7 +153,7 @@ public:
         
         osc::OutboundPacketStream r(buffer, OUTPUT_BUFFER_SIZE);
         r << osc::BeginMessage("/myo/orientationQuat")
-        << identifyMAC(myo->macAddress()) -1
+        << identifyMAC(myo->macAddress())
         << quat.x() << quat.y() << quat.z() << quat.w()<< osc::EndMessage;
         transmitSocket->Send(r.Data(), r.Size());
         
@@ -218,7 +218,7 @@ public:
         transmitSocket->Send(p.Data(), p.Size());
     }
     
-    // This is a utility function implemented for this sample that maps a myo::Myo* to a unique ID starting at 1.
+/*    // This is a utility function implemented for this sample that maps a myo::Myo* to a unique ID starting at 1.
     // It does so by looking for the Myo pointer in knownMyos, which onPair() adds each Myo into as it is paired.
     int identifyMyo(myo::Myo* myo) {
         // Walk through the list of Myo devices that we've seen pairing events for.
@@ -231,11 +231,12 @@ public:
         
         return 0;
     }
-    
+
+
     // We store each Myo pointer that we pair with in this list, so that we can keep track of the order we've seen
     // each Myo and give it a unique short identifier (see onPair() and identifyMyo() above).
     std::vector<myo::Myo*> knownMyos;
-    
+  */    
     // There are other virtual functions in DeviceListener that we could override here, like onAccelerometerData().
     // For this example, the functions overridden above are sufficient.
     
