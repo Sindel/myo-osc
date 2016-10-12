@@ -7,6 +7,29 @@
 
 namespace myo {
 
+//--------------- begin ----------------
+// arthur add, 2015-09-17, get mac address and name for myo
+inline
+void Myo::setName(std::string &name) {
+    _name = name;
+}
+inline
+const char *Myo::name() const
+{
+    return _name.c_str();
+}
+inline
+void Myo::setMacAddress(std::string &mac)
+{
+    _mac = mac;
+}
+inline
+const char *Myo::macAddress() const
+{
+    return _mac.c_str();
+}
+//--------------- end ----------------
+
 inline
 void Myo::vibrate(VibrationType type)
 {

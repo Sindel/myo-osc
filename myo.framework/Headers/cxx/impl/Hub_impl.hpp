@@ -103,6 +103,18 @@ void Hub::onDeviceEvent(libmyo_event_t event)
 
     if (!myo && libmyo_event_get_type(event) == libmyo_event_paired) {
         myo = addMyo(opaqueMyo);
+        //--------------- begin ----------------
+        // arthur add, 2015-09-17, get mac address and name for myo
+        uint64_t mac_addr = libmyo_event_get_mac_address(event);
+        libmyo_string_t mac_t = libmyo_mac_address_to_string(mac_addr);
+        std::string mac = libmyo_string_c_str(mac_t);
+        libmyo_string_free(mac_t);
+        myo->setMacAddress(mac);
+        libmyo_string_t name_t = libmyo_event_get_myo_name(event);
+        std::string name = libmyo_string_c_str(name_t);
+        libmyo_string_free(name_t);
+        myo->setName(name);
+        //--------------- end ----------------
     }
 
     if (!myo) {
