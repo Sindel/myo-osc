@@ -6,7 +6,7 @@ Originally By [Samy Kamkar](http://samy.pl)
 
 This version by Michele Abolaffio (micheleabolaffio.wordpress.com)
 
-Myo-OSC is a C++ application designed to take hand gestures, accelerometer, gyroscope and magnetometer data from the [Thalmic Labs Myo](https://www.thalmic.com/en/myo/) armband and output it over OSC. This allows incredible control of virtually any device or application just by waving or flailing your arm or hand around ike a crazy person.
+Myo-OSC is a C++ application designed to take hand gestures, accelerometer, gyroscope and magnetometer data from the [Thalmic Labs Myo](https://www.thalmic.com/en/myo/) armband and output it over OSC. This allows incredible control of virtually any device or application just by waving or flailing your arm or hand around like a crazy person.
 
 
 You can also send any OSC data over a network.
