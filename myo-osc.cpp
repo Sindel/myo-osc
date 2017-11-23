@@ -16,10 +16,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #endif
 
-//#define MAC myo->macAddressAsString().c_str()
-#define MAC "00:00:00:00:00:00" // beta release 1 removed macs :(
-
-
 #define _USE_MATH_DEFINES
 #include <cmath>
 #include <iostream>
@@ -71,7 +67,7 @@ public:
 
         int identifyMAC (std::string mac)
     {
-        if (mac == std::string( "f1-84-8c-ad-ef-38"))
+        if (mac == std::string( "f7-9a-4a-68-04-8c"))
         {
             return 0;
 
@@ -175,10 +171,12 @@ public:
         << currentPose.toString().c_str() << osc::EndMessage;
         transmitSocket->Send(p.Data(), p.Size());
         
+        /*
         // Vibrate the Myo whenever we've detected that the user has made a fist.
         if (pose == myo::Pose::fist) {
             myo->vibrate(myo::Myo::vibrationShort);
         }
+        */
     }
     
     void onEmgData(myo::Myo* myo, uint64_t timestamp, const int8_t* emg) override {
@@ -309,7 +307,7 @@ int main(int argc, char** argv)
         else if (argc == 3)
         {
             std::cout << "Sending Myo OSC to " << argv[1] << ":" << argv[2] << "\n";
-            std::cout << "Last edit by Michele Abolaffio, 2016-10-11. \nmyo-osc directly bound to mac addresses of specific myos. \nMyo 0 is Left, Myo 1 is Right.\n\n" << std::endl;
+            std::cout << "Last edit by Michele Abolaffio, 2017-11-22. \nmyo-osc directly bound to mac addresses of specific myos. \nMyo 0 is Left, Myo 1 is Right.\n\n" << std::endl;
             transmitSocket = new UdpTransmitSocket(IpEndpointName(argv[1], atoi(argv[2])));
         }
         else
@@ -322,6 +320,8 @@ int main(int argc, char** argv)
         // First, we create a Hub with our application identifier. Be sure not to use the com.example namespace when
         // publishing your application. The Hub provides access to one or more Myos.
         myo::Hub hub("com.michele.myo-osc");
+        hub.setLockingPolicy(hub.lockingPolicyNone);
+
  /*    
        
         std::cout << "Attempting to find a Myo..." << std::endl;
